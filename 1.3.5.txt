@@ -1,0 +1,52 @@
+MOV A,33
+CALL NUM
+HLT
+NUM:
+	MOV B,A
+ 	DIV 100
+ 	PUSH A
+ 	MUL 100
+ 	SUB B,A
+ 	MOV A,B
+	DIV 10
+	PUSH A
+	MUL 10
+	SUB B,A
+	MOV A,B
+FIRST:
+ 	MOV D,B
+ 	POP A
+ 	MOV C,A
+ 	POP A
+ 	MOV B,A
+ 	MOV A,D
+ 	PUSH A
+ 	MOV A,C
+ 	PUSH A
+ 	MOV A,B
+ 	MOV B,253
+SCREEN:
+ 	CMP A,0
+ 	JNZ OUT	
+FOUT:
+ 	INC B
+ 	POP A
+ 	CMP A,0
+ 	JNZ OUT
+SOUT:
+ 	INC B
+ 	POP A
+ 	JMP OUT
+SOME:
+ 	POP A
+ 
+OUT:
+  	ADD A, 48
+  	MOV [B],A
+ 	INC B
+ 	CMP B,0
+ 	JZ END
+ 	CMP B,255
+	JBE SOME
+END:
+ 	RET	

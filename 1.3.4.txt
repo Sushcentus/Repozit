@@ -1,0 +1,15 @@
+JMP START
+DATE:
+	DB "15/11"
+	DB 0
+START:
+	MOV C,DATE
+	MOV D,232
+SCREEN:
+	MOV A, [C]	
+	MOV [D], A	
+	INC C
+	INC D  
+	CMP B, [C]	
+	JNZ SCREEN
+	HLT

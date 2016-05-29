@@ -1,0 +1,11 @@
+JMP START
+DATE:
+	DB 15
+	DB 11
+START:
+	MOV C,DATE
+SUM:
+	MOV A, [C]
+	INC C
+	MOV B, [C]
+	ADD A,B
